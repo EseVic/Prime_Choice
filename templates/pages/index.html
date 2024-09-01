@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% load static %} 
+
+<style>
+    body {
+        /* Add additional styling for the background, such as size, position, etc. */
+        
+        background-position: center;
+        /* Add other styles as needed */
+    }
+
+    .card {
+        /* Add styles for the card if needed */
+        margin-top: 70px; /* Adjust the margin as needed */
+        padding: 20px; /* Adjust the padding as needed */
+        opacity: 0.9; /* Adjust the opacity as needed */
+        /* Add other card styles */
+    }
+
+    h1, p {
+        color: #35749e; /* Set text color to white or a color that contrasts well with the background */
+        /* Add other styles for headings and paragraphs */
+    }
+
+</style>
+<body background='resources/aaa.png'>
+
+<div class="card text-center has-bg-img" style="background-image: url('');">
+  <img class="bg-img" src="resources/bg.png" alt="...">
+    <div class="card">
+        <h1>Welcome To Primechoice</h1>
+        <p><i>Your choice is precious, make it count</i></p>
+        <a class="btn btn-info btn-lg btn-block mt-4" href="{% url 'polls:index' %}">
+            Electoral Dashboard
+        </a>
+    </div>
+</div>
+</body>
+{% endblock %}
