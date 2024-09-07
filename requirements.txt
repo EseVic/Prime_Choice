@@ -1,6 +1,6 @@
 asgiref==3.8.1
 distlib==0.3.8
-Django==5.1
+Django==4.1.6
 django-cleanup==5.1.0
 django-crispy-forms==1.9.2
 filelock==3.15.4
