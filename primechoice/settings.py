@@ -24,7 +24,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = os.getenv('DEBUG') == 'True'
 
 # ALLOWED_HOSTS = ['.vercel.app', '.now.sh']
-ALLOWED_HOSTS = ['prime-choice.vercel.app', '.vercel.app', 'localhost' ]
+ALLOWED_HOSTS = ['prime-choice.vercel.app', '.vercel.app', 'localhost', '127.0.0.1' ]
 
 
 
