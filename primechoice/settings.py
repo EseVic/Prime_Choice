@@ -24,7 +24,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = os.getenv('DEBUG') == 'True'
 
 # ALLOWED_HOSTS = ['.vercel.app', '.now.sh']
-ALLOWED_HOSTS = ['https://prime-choice.vercel.app', 'localhost']
+ALLOWED_HOSTS = ['prime-choice.vercel.app', '.vercel.app', 'localhost' ]
 
 
 
@@ -94,6 +94,7 @@ DATABASES = {
     )
 }
 
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
