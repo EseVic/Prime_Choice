@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: django
+  namespace: django-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: django
+  template:
+    metadata:
+      labels:
+        app: django
+    spec:
+      containers:
+        - name: django
+          image: peterukpabi4/prime-choice-app:v1
+          ports:
+            - containerPort: 8000
+          envFrom:
+            - configMapRef:
+                name: django-config
+            - secretRef:
+                name: django-secret
+          command: ["sh", "-c"]
+          args:
+            - |
+              python manage.py migrate &&
+              python manage.py collectstatic --noinput &&
+              gunicorn primechoice.wsgi:application --bind 0.0.0.0:8000
+

@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: django-config
+  namespace: django-app
+data:
+  DEBUG: "False"
+  DJANGO_SETTINGS_MODULE: "primechoice.settings"
+
