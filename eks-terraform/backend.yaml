@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-todo-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: react-todo-backend
+  template:
+    metadata:
+      labels:
+        app: react-todo-backend
+    spec:
+      containers:
+      - name: react-todo-backend
+        image: peterukpabi4/eks-react-todo-backend
+        ports:
+        - containerPort: 5000
+        env:
+        - name: MONGO_URI
+          valueFrom:
+            secretKeyRef:
+              name: mongo-secret
+              key: MONGO_URI
+        - name: REACT_APP_FRONTEND_URL
+          valueFrom:
+            configMapKeyRef:
+              name: react-todo-config
+              key: REACT_APP_FRONTEND_URL
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: react-todo-backend
+spec:
+  selector:
+    app: react-todo-backend
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000

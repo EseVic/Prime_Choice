@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-todo-frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: react-todo-frontend
+  template:
+    metadata:
+      labels:
+        app: react-todo-frontend
+    spec:
+      containers:
+      - name: react-todo-frontend
+        image: peterukpabi4/eks-react-todo:v1
+
+        ports:
+        - containerPort: 80
+        env:
+        - name: VITE_BACKEND_URL
+          valueFrom:
+            configMapKeyRef:
+              name: react-todo-config
+              key: VITE_BACKEND_URL
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: react-todo-frontend
+spec:
+  selector:
+    app: react-todo-frontend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: LoadBalancer

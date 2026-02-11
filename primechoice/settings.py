@@ -92,11 +92,30 @@ WSGI_APPLICATION = 'primechoice.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         default=os.getenv('DATABASE_URL')
+#     )
+# }
+
 DATABASES = {
-    'default': dj_database_url.config(
-        default=os.getenv('DATABASE_URL')
+    "default": dj_database_url.config(
+        default=os.getenv("DATABASE_URL"),
+        # engine="django.db.backends.postgresql",  
     )
 }
+
+
+
+# Use SQLite locally regardless of DATABASE_URL
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
